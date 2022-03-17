@@ -4,7 +4,7 @@
 
     <section class="allContent" v-if="activeOne">
         <div class="planet" style="">
-            <article><p>01</p><p>PICK YOUR DESTINATION</p></article>
+            <article class="pageTitle"><p>01</p><p>PICK YOUR DESTINATION</p></article>
             <img :src="src" alt="">
             <!--<img src="../assets/destination/image-moon.png" alt="">-->
         </div>
@@ -57,7 +57,7 @@ export default {
             var url = id.images.png
             this.src = require("@/assets/destination/"+url)
 
-            const p = document.getElementsByClassName(id.name)
+            
             
 
         },
@@ -128,6 +128,18 @@ export default {
 </script>
 
 <style lang="scss">
+    .pageTitle{
+        width: fit-content;
+        p{
+            display: inline;
+            font-size: 28px;
+        }
+        p:first-child{
+            margin-right: 20px ;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.26);
+        }
+    }
     .Dest{
         position: absolute;left: 0;right: 0;bottom: 0;top: 0;
     
@@ -156,17 +168,7 @@ export default {
                 margin-top: 50px;
                 width: 445px;
             }
-            article{
-                p{
-                    display: inline;
-                    font-size: 28px;
-                }
-                p:first-child{
-                    margin-right: 20px ;
-                    font-weight: 800;
-                    color: rgba(255, 255, 255, 0.26);
-                }
-            }
+            
 
         }
         .infos{
@@ -232,6 +234,9 @@ export default {
     }
     //tablet
     @media only screen and (max-width: 770px) {
+        .Dest{
+            background-image: url("../assets/destination/background-destination-tablet.jpg");
+        }
         .allContent{
             flex-direction: column;
             padding: 0 39px;
@@ -263,6 +268,9 @@ export default {
         }
     }
     @media only screen and (max-width: 500px) {
+        .Dest{
+            background-image: url("../assets/destination/background-destination-mobile.jpg");
+        }
         .allContent{
             .planet{
                 align-items: center;
