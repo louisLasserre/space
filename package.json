@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "npm run serve & npx json-server --watch data/data.json"
+    "test": "npm run build & npx json-server --watch data/data.json"
   },
   "dependencies": {
     "core-js": "^3.8.3",
