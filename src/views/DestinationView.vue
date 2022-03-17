@@ -102,7 +102,7 @@ export default {
             border.border.style.width = '90px'
         }
 
-        fetch('http://localhost:3000/destinations')
+        fetch('https://spacedblouis.herokuapp.com/destinations')
             .then(res => res.json())
             .then(data => {
                 this.destination = data
