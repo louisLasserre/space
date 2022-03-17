@@ -12,7 +12,7 @@
             <div class="infosbar">
 
                 <div class="planetName" v-for="dest in destination" :key="dest.name"> 
-                    <p @click="active(dest)">{{ dest.name }}</p>
+                    <p @click="active(dest), pBorder(dest)" :class="dest.name">{{ dest.name }}</p>
                 </div>
             </div>
             <h1 @click="click(activeOne.images.png)">{{ activeOne.name }}</h1>
@@ -52,23 +52,36 @@ export default {
     methods: {
         active(id){
             
-            console.log(id)
+            
             this.activeOne = id
             var url = id.images.png
             this.src = require("@/assets/destination/"+url)
 
+            const p = document.getElementsByClassName(id.name)
+            
 
         },
-        imgUrl(){
+        pBorder(id){
+            const p = document.getElementsByClassName(id.name)
+            p[0].style.borderBottom = "3px solid white"
+            p[0].style.color = "white"
             
-        },
-        click(url) {
-            
-            
-            this.test = true
+
+            this.destination.forEach(dest => {
+                
+                if(this.activeOne.name != dest.name){
+                    
+                    let pp = document.getElementsByClassName(dest.name)
+                    pp[0].style.borderBottom = "3px solid rgba(255, 255, 255, 0)"
+                    pp[0].style.color = "#D0D6F9"
+                }
+
+                
+            });
         }
+        
     },
-    beforeMount(){
+    mounted(){
     
         const border = document.getElementsByClassName('border')
     
@@ -99,6 +112,7 @@ export default {
             .then(() => {
                 var url = this.activeOne.images.png
                 this.src = require("@/assets/destination/"+url)
+                this.pBorder(this.activeOne)
             })
             .catch(err => console.log(err.message))
 
@@ -107,10 +121,7 @@ export default {
 
         
     },
-    mounted() {
-        
-
-    }
+    
     
 
 }
@@ -170,11 +181,23 @@ export default {
                 .planetName:first-child{
                     margin-left: 0;
                 }
+                p{
+                    border-bottom: 3px solid rgba(255, 255, 255, 0);
+                    height: 40px;
+                    cursor: pointer;
+                    transition:  0.3s;
+                }
+                p:hover{
+                    border-bottom: 3px solid rgba(255, 255, 255, 0.5) !important;
+                    
+                }
+                
                 
             }
             .planetName{
                 margin: 0 20px;
             }
+            
             p{
                 font-size: 18px;
                 text-align: left;
@@ -191,13 +214,14 @@ export default {
                 height: 1px;
                 background: #383B4B;
                 margin: 40px 0 20px 0;
+                
             }
             .infoNbr{
                 display: flex;
                 h3{
                     width: fit-content;
                     font-family: 'Bellefair', serif !important;
-                    font-size: 38px;
+                    font-size: 38px !important;
                 }
                 & :first-child{
                     margin-right: 60px;
@@ -240,7 +264,31 @@ export default {
     }
     @media only screen and (max-width: 500px) {
         .allContent{
-
+            .planet{
+                align-items: center;
+                p{
+                    font-size: 16px !important;
+                }
+                img{
+                    width: 170px;
+                }
+            }
+            .infos{
+                .infoNbr{
+                    justify-content: space-between;
+                    div{
+                        text-align: center;
+                    }
+                    p{
+                        margin: 0 !important;
+                    }
+                    h3{
+                        font-size: 28px !important;
+                        margin: 0 !important;
+                        width: fit-content;
+                    }
+                }
+            }
         }
     }
 

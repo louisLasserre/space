@@ -24,6 +24,20 @@ export default {
             border.border.style.left = '49.5%'
             border.border.style.width = '60px'
         }
+  },
+  data() {
+      return {
+          boucle: true,
+
+      }
+  },
+  methods: {
+      reload() {
+          console.log("reload")
+      }
+  },
+  mounted() {
+      
   }
 
 }
