@@ -111,6 +111,10 @@ export default {
     }
     .crewContent{
         position: fixed;bottom: 0;left: 0;right: 0;
+        img{
+            height: 70vh;
+        }
+    
         
     }
     .crewLeftP{
@@ -121,9 +125,7 @@ export default {
         
         
     }
-    img{
-        height: 70vh;
-    }
+    
 
     .crewInfos{
         display: flex;
