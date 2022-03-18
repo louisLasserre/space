@@ -271,7 +271,13 @@ export default {
         .Dest{
             background-image: url("../assets/destination/background-destination-mobile.jpg");
         }
+        .planetName{
+            p{
+                margin-top: 0 !important;
+            }
+        }
         .allContent{
+            padding: 0 20px; 
             .planet{
                 align-items: center;
                 p{
@@ -282,6 +288,8 @@ export default {
                 }
             }
             .infos{
+                margin-top: 0;
+                width: 100%;
                 .infoNbr{
                     justify-content: space-between;
                     div{
