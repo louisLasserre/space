@@ -1,16 +1,20 @@
 <template>
     <div class="crewBack"></div>
-    <section class="crewContent" v-if="crewActiveOne">
-        <article class="pageTitle"><p>02</p><p>MEET YOUR CREW</p></article>
+    <section class="allContent crewContent" v-if="crewActiveOne">
+        <div class="planet crewLeftP">
 
-        <div class="crewInfos">
-            <h2>{{ crewActiveOne.role }}</h2><br>
-            <h1>{{crewActiveOne.name}}</h1>
-        </div>
-        
-        <div class="btnContainer">
-            <div class="btnCircle" v-for="member in crew" :class="member.name" :key="member.name" @click="active(member), styleActive()"></div>
-        </div>
+            <article class="pageTitle"><p>02</p><p>MEET YOUR CREW</p></article>
+
+            <div class="crewInfos">
+                <h2>{{ crewActiveOne.role }}</h2>
+                <h1>{{crewActiveOne.name}}</h1>
+                <p>{{crewActiveOne.bio}}</p>
+            </div>
+            
+            <div class="btnContainer">
+                <div class="btnCircle" v-for="member in crew" :class="member.name" :key="member.name" @click="active(member), styleActive()"></div>
+            </div>
+        </div> 
         <img :src="src" alt="">
     </section>
   
@@ -106,27 +110,58 @@ export default {
         background-size: cover;
     }
     .crewContent{
-        position: relative;
-        align-items: flex-start;
-        z-index: 0;
+        position: fixed;bottom: 0;left: 0;right: 0;
         
+    }
+    .crewLeftP{
+        width: 35vw;
+        
+        height: 70vh;
+        justify-content: space-between;
+        
+        
+    }
+    img{
+        height: 70vh;
     }
 
     .crewInfos{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width: 200px;
+        
+        h1{
+            font-size: 56px;
+            margin: 10px 0 40px 0;
+        }
+        p{
+            text-align: left;
+            font-size: 18px;
+        }
+        h2{
+            font-size: 32px;
+            font-family: 'Bellefair', serif;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+    .btnContainer{
+        padding-bottom: 40px;
     }
     .btnCircle{
         background: rgba(255, 255, 255, 0.171);
-        width: 20px;
-        height: 20px;
-        margin: 20px 30px;
+        width: 15px;
+        height: 15px;
+        margin: 20px 15px;
         display: inline-block;
         z-index: 2;
         border-radius: 50%;
 
+
+    }
+    .planet article p{
+        color: white;
     }
     @media only screen and (max-width: 770px) {
         .crewBack{
