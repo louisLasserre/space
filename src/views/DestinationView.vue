@@ -2,7 +2,7 @@
   Destination view
     <section class="Dest"></section>
 
-    <section class="allContent" v-if="activeOne">
+    <section class="allContent dest-content" v-if="activeOne">
         <div class="planet" style="">
             <article class="pageTitle"><p>01</p><p>PICK YOUR DESTINATION</p></article>
             <img :src="src" alt="">
@@ -166,7 +166,7 @@ export default {
             img{
                 margin-left: 65px;
                 margin-top: 50px;
-                width: 445px;
+                height: 445px;
             }
             
 
@@ -179,7 +179,7 @@ export default {
             margin-top: 30px;
             .infosbar{
                 display: flex;
-                margin-bottom: 30px;
+                //margin-bottom: 30px;
                 .planetName:first-child{
                     margin-left: 0;
                 }
@@ -203,7 +203,7 @@ export default {
             p{
                 font-size: 18px;
                 text-align: left;
-                margin-top: 20px;
+                //margin-top: 20px;
                 line-height: 32px;
                 
 
@@ -215,7 +215,7 @@ export default {
                 width: 100%;
                 height: 1px;
                 background: #383B4B;
-                margin: 40px 0 20px 0;
+                margin: 5px 0 10px 0;
                 
             }
             .infoNbr{
@@ -237,24 +237,41 @@ export default {
         .Dest{
             background-image: url("../assets/destination/background-destination-tablet.jpg");
         }
+        .dest-content{
+            position: fixed;bottom: 0;left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            height: 90vh;
+
+        }
         .allContent{
             flex-direction: column;
             padding: 0 39px;
             align-items: center;
             .planet{
-                width: 100%;
+                
+                height: 100%;
+                justify-content: space-around;
+                
+                
                 img{
-                    
-                    width: 300px;
-                    display: block;margin: 50px auto;
+                    height: 100%;
+                    max-height: 350px;
+                    display: block;margin: 15px auto;
                 }
                 p{
                     font-size: 20px !important;
                 }
             }
+            
             .infos{
-                width: 70vw;
+                width: 100%;
                 align-items: center;
+
+                height: 100%;
+                min-height: 340px;
+                max-height: 549px;
+                justify-content: space-around;
                 p{
                     text-align: center;
                     font-size: 16px;
@@ -284,7 +301,7 @@ export default {
                     font-size: 16px !important;
                 }
                 img{
-                    width: 170px;
+                    height: 200px;
                 }
             }
             .infos{

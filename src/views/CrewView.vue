@@ -334,12 +334,12 @@ export default {
             .astro-img{
                 position: relative;
                 height: 100%;
-                min-height: 530px;
+                min-height: 250px;
 
             }
             img{
                 height: 100%;
-                min-height: 530px;
+                min-height: 250px;
                 
                 position: absolute;bottom: 0;
                 left: 50%;
@@ -355,6 +355,7 @@ export default {
         }
         .crewLeftP{
             height: auto;
+            width: 100%;
             margin-top: 20px;
             .crewInfos{
                 width: 60vw;margin: 0 auto;
