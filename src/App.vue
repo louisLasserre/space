@@ -120,7 +120,7 @@ header{
   }
 }
 
-nav {
+.nav {
   padding:  $height 20px 0 20px;
   background: rgba($color: #ffffff, $alpha: 0.1);
   width: fit-content;
@@ -192,7 +192,7 @@ nav {
       margin-left: 39px;
     }
   }
-  nav{
+  .nav{
     backdrop-filter: none;
     a:last-child{
       margin-right: 39px;
@@ -210,7 +210,7 @@ nav {
   }
 }
 @media only screen and (max-width: 500px) {
-  nav{
+  .nav{
     width: 0vw;
     padding-left: 0px;
     padding-right: 0px;

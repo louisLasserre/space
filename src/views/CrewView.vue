@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { parseQuery } from 'vue-router'
+
 export default {
     mounted(){
         
@@ -145,7 +145,7 @@ export default {
 
     },
     styleActive() {
-        console.log("active")
+        
         const circle = document.getElementsByClassName(this.crewActiveOne.name)
         circle[0].style.backgroundColor = "white"
         
