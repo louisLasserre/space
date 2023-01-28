@@ -5,18 +5,19 @@
         <h3>SO, YOU WANT TO TRAVEL TO</h3>
         <h1>SPACE</h1>
         <p>
-        Let’s face it; if you want to go to space, you might as well genuinely go to 
-        outer space and not hover kind of on the edge of it. Well sit back, and relax 
+        Let’s face it; if you want to go to space, you might as well genuinely go to
+        outer space and not hover kind of on the edge of it. Well sit back, and relax
         because we’ll give you a truly out of this world experience!</p>
       </article>
-      <a href="/destination">
+      <router-link to="destination">
         <div class="circle"><div class="innerCircle"></div><h1>EXPLORE</h1></div>
-      </a>
+      </router-link>
 
-      
+
+
     </div>
-  
-  
+
+
 </template>
 
 <script>
@@ -27,13 +28,13 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      
+
     }
   },
   mounted(){
-    
+
     const border = document.getElementsByClassName('border')
-    
+
     var width =  document.body.clientWidth
     if(width <= 770 && width > 500 ){
       console.log("tablet")
@@ -50,19 +51,19 @@ export default {
       border.border.style.left = '14.5%'
       border.border.style.width = '60px'
     }
-    
-    
+
+
 
   }
 }
 </script>
 
 <style lang="scss">
-  
+
   .home{
-    
+
     position: absolute;left: 0;right: 0;bottom: 0;top: 0;
-    
+
     z-index: 0;
     background-image: url('../assets/home/background-home-desktop.jpg');
     background-repeat: no-repeat;
@@ -70,13 +71,13 @@ export default {
   }
   .content{
     margin: 0 165px 100px 165px;
-    
+
     position: fixed;bottom: 0;left: 0;right: 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     .circle{
-      
+
       width: 274px;
       height: 274px;
       border-radius: 50%;
@@ -105,7 +106,7 @@ export default {
         position: absolute;
         top: 50%;left: 50%;
         transform: translate(-50%, -50%)
-        
+
       }
     }
     a{
@@ -121,8 +122,8 @@ export default {
     p{
       line-height: 32px;
     }
-    
-    
+
+
 
   }
 @media only screen and (max-width: 770px) {
@@ -145,12 +146,12 @@ export default {
   .home{
     background-image: url("../assets/home/background-home-tablet.jpg");
   }
-  
+
 
 }
 @media only screen and (max-width: 500px) {
   .home{
-    
+
     background-image: url("../assets/home/background-home-mobile.jpg");
   }
   .content{
