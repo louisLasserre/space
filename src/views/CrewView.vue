@@ -9,9 +9,9 @@
                 <h2 class="crewDy">{{ crewActiveOne.role }}</h2>
                 <h1 class="crewDy">{{crewActiveOne.name}}</h1>
                 <p class="crewDy">{{crewActiveOne.bio}}</p>
-                
+
             </div>
-            
+
             <div class="btnContainer">
                 <div class="btnCircle" v-for="member in crew" :class="member.name" :key="member.name" @click="active(member)"></div>
                 <button class="previous btnC" @click="prev"> <p class="btnP">prev</p> </button>
@@ -21,18 +21,18 @@
         <div class="astro-img">
             <img :src="src" alt="astronaute image">
         </div>
-        
+
     </section>
-  
+
 </template>
 
 <script>
 
 export default {
     mounted(){
-        
+
         const border = document.getElementsByClassName('border')
-    
+
         var width =  document.body.clientWidth
         if(width <= 770 && width > 380 ){
             console.log("tablet")
@@ -51,16 +51,16 @@ export default {
         }
 
 
-        fetch('https://spacedblouis.herokuapp.com/crew')
+        fetch('https://space-db.osc-fr1.scalingo.io/crew')
             .then(res => res.json())
             .then(data => {
                 this.crew = data
                 this.crewActiveOne = data[0]
-                
+
             })
             .then(() => {
                 var url = this.crewActiveOne.images.png
-                
+
                 this.src = require("@/assets/crew/"+url)
                 this.styleActive()
             })
@@ -74,15 +74,15 @@ export default {
         }else if(actualId == 0){
             actualId = 3
         }
-        
+
         this.crew.forEach(member => {
             if(parseInt(member.id) ==  actualId){
 
-                
+
                 this.active(member)
             }
         });
-        
+
     },
     next(){
         var actualId = parseInt(this.crewActiveOne.id)
@@ -91,11 +91,11 @@ export default {
         }else if(actualId == 3){
             actualId = 0
         }
-        
+
         this.crew.forEach(member => {
             if(parseInt(member.id) ==  actualId){
 
-                
+
                 this.active(member)
             }
         });
@@ -104,9 +104,9 @@ export default {
     move(){
         const btn = document.getElementsByClassName("btnC")
         const btnP = document.getElementsByClassName("btnP")
-        
+
         for(let item of btn){
-            
+
             item.style.backgroundColor = "rgba(255, 255, 255, 0.17)"
             item.style.backgroundColor = "2px solid rgba(255, 255, 255, 0.17)"
         }
@@ -114,21 +114,21 @@ export default {
             text.style.color = "rgba(255, 255, 255, 0.5)"
         }
     },
-    
+
     active(id){
         const crewBox = document.getElementsByClassName("crewDy")
-        
-        
-        
-        
+
+
+
+
         for(let item of crewBox){
             item.style.opacity = "0"
         }
 
 
-       
-        
-        
+
+
+
         setTimeout(() => {
             this.crewActiveOne = id
             var url = id.images.png
@@ -138,29 +138,29 @@ export default {
             }
             this.styleActive()
         },400)
-        
 
-        
+
+
 
 
     },
     styleActive() {
-        
+
         const circle = document.getElementsByClassName(this.crewActiveOne.name)
         circle[0].style.backgroundColor = "white"
-        
-        
+
+
 
         this.crew.forEach(member => {
-            
+
             if(this.crewActiveOne.name != member.name){
-                
+
                 let pp = document.getElementsByClassName(member.name)
                 pp[0].style.backgroundColor = "rgba(255, 255, 255, 0.17)"
-                
+
             }
 
-            
+
         });
     }
 
@@ -178,7 +178,7 @@ export default {
 
 <style lang="scss">
     body{
-        height: 100%; 
+        height: 100%;
         overflow: hidden;
     }
     .pageTitle{
@@ -186,7 +186,7 @@ export default {
     }
     .crewBack{
         position: absolute;left: 0;right: 0;bottom: 0;top: 0;
-    
+
         z-index: 0;
         background-image: url('../assets/crew/background-crew-desktop.jpg');
         background-repeat: no-repeat;
@@ -199,48 +199,48 @@ export default {
         grid-template-rows: repeat(2, auto);
         grid-template-areas: "pageTitle img"
                             "infos img";
-        
+
         img{
             height: 70vh;
-            
-            
+
+
         }
         .astro-img{
             height: 100%;
             grid-area: img;
 
         }
-        
-    
-        
+
+
+
     }
     .crewLeftP{
         width: 35vw;
-        
-        
+
+
         justify-content: space-between;
         transition: all 0.5s;
-        
+
     }
     .crewDy{
         transition: all 0.3s;
         width: fit-content;
     }
-    
+
 
     .crewInfos{
         grid-area: infos;
         position: relative;
-        
+
         h1{
             font-size: 56px;
             margin: 10px 0 40px 0;
-            
+
         }
         p{
             text-align: left;
             font-size: 18px;
-            
+
         }
         h2{
             font-size: 32px;
@@ -249,13 +249,13 @@ export default {
             font-weight: 400;
             margin: 0;
 
-            
+
         }
-        
-        
+
+
     }
     .btnContainer{
-        
+
         padding-bottom: 40px;
         position: relative;
         button{
@@ -268,7 +268,7 @@ export default {
             position: absolute;
             top: 0;
             transition: all 0.3s;
-            
+
             text-align: center;
             p{
                 color: rgba(0, 0, 0, 0);
@@ -278,7 +278,7 @@ export default {
                 top: 50%;left: 50%;
                 transform: translate(-50%, -50%);
 
-                
+
             }
         }
         .previous{
@@ -321,7 +321,7 @@ export default {
         }
         .crewContent{
             /*changement de la grid*/
-           
+
             width: 90%;
             margin: 0 auto;
             height: 90%;
@@ -330,7 +330,7 @@ export default {
             grid-template-areas:"pageTitle"
                                 "infos"
                                 "img";
-            
+
             .astro-img{
                 position: relative;
                 height: 100%;
@@ -340,7 +340,7 @@ export default {
             img{
                 height: 100%;
                 min-height: 250px;
-                
+
                 position: absolute;bottom: 0;
                 left: 50%;
                 transform: translateX(-50%);
@@ -348,7 +348,7 @@ export default {
 
             }
         }
-         
+
         .btnCircle{
             width: 10px;
             height: 10px;
@@ -396,17 +396,17 @@ export default {
             }
             .astro-img::after{
                 content: "";
-                
+
                 width: 90vw;
                 position: absolute;bottom: -3px;left: 0;
-                
+
                 border-bottom: 3px solid rgba(255, 255, 255, 0.178);
-                
+
             }
             img{
-               min-height: 200px; 
+               min-height: 200px;
                height: 100%;
-               
+
             }
         }
         .crewContent{
@@ -440,7 +440,7 @@ export default {
                 grid-area: boutons;
                 padding-bottom: 0;
             }
-            
+
         }
 
     }

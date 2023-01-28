@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DestinationView from '../views/DestinationView.vue'
 import CrewView from '../views/CrewView.vue'
@@ -25,11 +25,11 @@ const routes = [
     name: "technology",
     component: TechnologyView
   }
-  
+
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 

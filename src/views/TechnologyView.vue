@@ -4,7 +4,7 @@
         <article class="pageTitle"><p>03</p><p>SPACE LAUNCH 101</p></article>
         <div class="techno-btn-container">
             <nav class="techno-btn" v-for="tech in technology" :id="tech.id" :key="tech.id" @click="active(tech)"><h3>{{ tech.id+1 }}</h3></nav>
-            
+
         </div>
         <article class="techno-texte">
             <article>
@@ -28,20 +28,20 @@ export default {
             technology: [],
             technoActive: [],
             src: null,
-            
+
 
         }
     },
     mounted(){
-    
+
         var width =  document.body.clientWidth
 
-        fetch('https://spacedblouis.herokuapp.com/technology')
+        fetch('https://space-db.osc-fr1.scalingo.io/technology')
             .then(res => res.json())
             .then(data => {
                 this.technology = data
                 this.technoActive = data[0]
-                
+
             })
             .then(() => {
                 var url = this.technoActive.images.portrait
@@ -58,13 +58,13 @@ export default {
 
 
         const border = document.getElementsByClassName('border')
-    
-        
+
+
         if(width <= 770 && width > 500 ){
             console.log("tablet")
             border.border.style.left = '70%'
             border.border.style.width = '80px'
-            
+
 
 
         }else if(width <= 500){
@@ -81,7 +81,7 @@ export default {
     methods: {
         active(id){
             //const technoBtn = document.getElementsByClassName("techno-btn")
-            
+
             const width = document.body.clientWidth
             this.technoActive = id
 
@@ -94,7 +94,7 @@ export default {
             }else{
                 var anim = "translateY"
             }
-            
+
             const technoTxt = document.getElementsByClassName("techno-texte")
 
             if(id.id == 0){
@@ -107,13 +107,13 @@ export default {
 
 
             const img = document.getElementsByClassName("techno-img")
-            
+
             img[0].firstChild.style.opacity = "0"
 
 
-        
-            
-            
+
+
+
             setTimeout(() => {
                 if(width <= 770){
                     this.src = require("@/assets/technology/"+ smallurl)
@@ -126,30 +126,30 @@ export default {
             },250)
             this.styleActive()
 
-            
+
 
 
         },
         styleActive() {
-            
+
             const circle = document.getElementById(this.technoActive.id)
-            
+
             circle.style.backgroundColor = "white"
             circle.firstChild.style.color = "black"
-            
-            
+
+
 
             this.technology.forEach(tech => {
-                
+
                 if(this.technoActive.id != tech.id){
-                    
+
                     let pp = document.getElementById(tech.id)
                     pp.style.backgroundColor = "transparent"
                     pp.firstChild.style.color = "white"
-                    
+
                 }
 
-                
+
             });
         }
     }
@@ -160,11 +160,11 @@ export default {
 
 <style lang="scss">
 
-    
+
     .technoBack{
         position: absolute;
         left: 0;right: 0;bottom: 0;top: 0;
-    
+
         z-index: 0;
         background-image: url('../assets/technology/background-technology-desktop.jpg');
         background-repeat: no-repeat;
@@ -180,10 +180,10 @@ export default {
         grid-template-rows: 9vh 61vh;
         grid-template-areas:"pageTitle pageTitle pageTitle"
                             "btnBox texte img";
-        
+
         & .pageTitle{
-    
-            
+
+
         }
         & > .techno-btn-container{
             grid-area: btnBox;
@@ -195,18 +195,18 @@ export default {
             width: fit-content;
         }
         & > .techno-texte{
-            
+
             margin: 90px 0;
             min-height: 240px;
 
             grid-area: texte;
             overflow: hidden;
-            
+
             .inner-article{
                 height: 100%;
                 width: 80%;
                 margin: 0 auto;
-                
+
             }
             & > article{
                 height: 100%;
@@ -235,8 +235,8 @@ export default {
 
         cursor: pointer;
         transition: all 0.4s ;
-        
-        
+
+
         h3{
             font-family: 'Bellfair', serif !important;
             font-weight: normal;
@@ -244,7 +244,7 @@ export default {
             width: fit-content;
             display: inline;
         }
-        
+
     }
     .techno-btn-container nav:hover {
         border: 1px solid white;
@@ -268,7 +268,7 @@ export default {
             color :#D0D6F9;
             line-height: 35px;
         }
-        
+
     }
 
 
@@ -290,25 +290,25 @@ export default {
             padding: 0 0 50px 0;
             height: 83vh;
             .techno-img{
-                
+
                 height: fit-content;
                 min-height: unset;
                 position: relative;
                 width: 100vw;
                 img{
-                    
-                   
+
+
                     width: 100%;
                     height: unset;
                 }
-                
+
             }
             .techno-texte{
                 padding: 0;
                 min-height: 190px;
                 article{
                     display: flex;
-                    
+
                 }
                 .inner-article{
                     text-align: center;
@@ -334,17 +334,17 @@ export default {
                 width: 70%;
                 margin: 0 auto;
                 padding: 0;
-                
+
 
             }
             .pageTitle{
                 height: 100%;
                 margin-left: 50px;
-                
+
             }
 
         }
-        
+
     }
 
     @media only screen and (max-width: 500px) {
@@ -353,13 +353,13 @@ export default {
             background-image: url('../assets/technology/background-technology-mobile.jpg');
         }
         .techno-grid{
-            
+
             grid-template-rows: minmax(46px, 57px) calc(100vw / $imageHeight)  minmax(70px, 114px) auto;
-            
+
             .pageTitle{
                 p{
                     font-size: 16px;
-                    
+
                 }
                 margin: 0 auto;
             }

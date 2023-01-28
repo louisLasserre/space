@@ -11,7 +11,7 @@
         <div class="infos">
             <div class="infosbar">
 
-                <div class="planetName" v-for="dest in destination" :key="dest.name"> 
+                <div class="planetName" v-for="dest in destination" :key="dest.name">
                     <p @click="active(dest), pBorder(dest)" :class="dest.name">{{ dest.name }}</p>
                 </div>
             </div>
@@ -26,17 +26,17 @@
                 <div>
                     <p>EST. TRAVEL TIME</p>
                     <h3>{{ activeOne.travel}}</h3>
-                    
+
                 </div>
             </section>
         </div>
-        
-        
-        
-        
+
+
+
+
     </section>
 
-    
+
 </template>
 
 <script>
@@ -51,40 +51,40 @@ export default {
     },
     methods: {
         active(id){
-            
-            
+
+
             this.activeOne = id
             var url = id.images.png
             this.src = require("@/assets/destination/"+url)
 
-            
-            
+
+
 
         },
         pBorder(id){
             const p = document.getElementsByClassName(id.name)
             p[0].style.borderBottom = "3px solid white"
             p[0].style.color = "white"
-            
+
 
             this.destination.forEach(dest => {
-                
+
                 if(this.activeOne.name != dest.name){
-                    
+
                     let pp = document.getElementsByClassName(dest.name)
                     pp[0].style.borderBottom = "3px solid rgba(255, 255, 255, 0)"
                     pp[0].style.color = "#D0D6F9"
                 }
 
-                
+
             });
         }
-        
+
     },
     mounted(){
-    
+
         const border = document.getElementsByClassName('border')
-    
+
         var width =  document.body.clientWidth
         if(width <= 770 && width > 500 ){
             console.log("tablet")
@@ -102,12 +102,12 @@ export default {
             border.border.style.width = '90px'
         }
 
-        fetch('https://spacedblouis.herokuapp.com/destinations')
+        fetch(`https://space-db.osc-fr1.scalingo.io/destinations`)
             .then(res => res.json())
             .then(data => {
                 this.destination = data
                 this.activeOne = data[0]
-                
+
             })
             .then(() => {
                 var url = this.activeOne.images.png
@@ -116,13 +116,13 @@ export default {
             })
             .catch(err => console.log(err.message))
 
-            
-        
 
-        
+
+
+
     },
-    
-    
+
+
 
 }
 </script>
@@ -142,7 +142,7 @@ export default {
     }
     .Dest{
         position: absolute;left: 0;right: 0;bottom: 0;top: 0;
-    
+
         z-index: 0;
         background-image: url('../assets/destination/background-destination-desktop.jpg');
         background-repeat: no-repeat;
@@ -168,7 +168,7 @@ export default {
                 margin-top: 50px;
                 height: 445px;
             }
-            
+
 
         }
         .infos{
@@ -191,21 +191,21 @@ export default {
                 }
                 p:hover{
                     border-bottom: 3px solid rgba(255, 255, 255, 0.5) !important;
-                    
+
                 }
-                
-                
+
+
             }
             .planetName{
                 margin: 0 20px;
             }
-            
+
             p{
                 font-size: 18px;
                 text-align: left;
                 //margin-top: 20px;
                 line-height: 32px;
-                
+
 
             }
             h1{
@@ -216,7 +216,7 @@ export default {
                 height: 1px;
                 background: #383B4B;
                 margin: 5px 0 10px 0;
-                
+
             }
             .infoNbr{
                 display: flex;
@@ -249,11 +249,11 @@ export default {
             padding: 0 39px;
             align-items: center;
             .planet{
-                
+
                 height: 100%;
                 justify-content: space-around;
-                
-                
+
+
                 img{
                     height: 100%;
                     max-height: 350px;
@@ -263,7 +263,7 @@ export default {
                     font-size: 20px !important;
                 }
             }
-            
+
             .infos{
                 width: 100%;
                 align-items: center;
@@ -280,7 +280,7 @@ export default {
                 h1{
                     font-size: 80px;
                 }
-                
+
             }
         }
     }
@@ -294,7 +294,7 @@ export default {
             }
         }
         .allContent{
-            padding: 0 20px; 
+            padding: 0 20px;
             .planet{
                 align-items: center;
                 p{
